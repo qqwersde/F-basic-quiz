@@ -1,0 +1,22 @@
+nav {
+  background-color: $border-color;
+  height: 100px;
+  width: 95%;
+  margin-top: -110px;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  h3 {
+    color: $primary-color;
+  }
+
+  p {
+    height: 60%;
+    width: 95%;
+    margin-bottom: 30px;
+    margin-top: -10px;
+  }
+}
