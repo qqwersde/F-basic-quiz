@@ -1,14 +1,14 @@
 export const getNameById = (id) => {
-  const address = "http://localhost:3000/user";
+  const address = "http://localhost:3000/users/";
   const url = `${address}${id}`;
   // eslint-disable-next-line no-unused-vars,no-new
-  new Promise(function (resolve, reject) {
+  const promise = new Promise(function (resolve, reject) {
     fetch(url, { method: "GET" })
       .then((response) => {
         return response.json();
       })
+      // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        // eslint-disable-next-line no-undef
         if (data.code === 404) {
           // eslint-disable-next-line prefer-promise-reject-errors
           reject(`request exception${data.msg}`);
@@ -20,4 +20,6 @@ export const getNameById = (id) => {
         console.log(err);
       });
   });
+
+  return promise;
 };
