@@ -1,17 +1,23 @@
-export const getNameById = async () => {
-  const id = 1;
-  const address = "http://localhost/user";
+export const getNameById = (id) => {
+  const address = "http://localhost:3000/user";
   const url = `${address}${id}`;
-  // eslint-disable-next-line no-unused-vars
-  const arr = [];
-  await fetch(url, { method: "GET" })
-    .then((response) => {
-      return response.text();
-    })
-    // eslint-disable-next-line no-unused-vars
-    .then((data) => {})
-    .catch((err) => {
-      console.log(err);
-    });
-  return arr;
+  // eslint-disable-next-line no-unused-vars,no-new
+  new Promise(function (resolve, reject) {
+    fetch(url, { method: "GET" })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // eslint-disable-next-line no-undef
+        if (data.code === 404) {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject(`request exception${data.msg}`);
+        } else {
+          resolve(data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 };
