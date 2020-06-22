@@ -14,6 +14,7 @@ export const getEducationById = (id) => {
           // eslint-disable-next-line prefer-promise-reject-errors
           reject(`request exception${data.msg}`);
         } else {
+          console.log(data);
           resolve(data);
         }
       })
